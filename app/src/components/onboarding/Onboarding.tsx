@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { onboardingSteps } from "./onboardingData";
 import Step from "./step/Step";
 import { Box, Button, Stack, Container } from "@mui/material";
@@ -12,7 +12,30 @@ function Onboarding() {
   const currentStep = onboardingSteps[stepIndex];
   const progress = ((stepIndex + 1) / onboardingSteps.length) * 100;
 
+  // Load data from localStorage on component mount
+  useEffect(() => {
+    const savedData = localStorage.getItem("onboarding_form_data");
+    if (savedData) {
+      try {
+        const parsedData = JSON.parse(savedData);
+        setFormData(parsedData);
+        console.log("Loaded form data from localStorage:", parsedData);
+      } catch (error) {
+        console.error("Error parsing saved form data:", error);
+      }
+    }
+  }, []);
+
+  // Save to localStorage whenever formData changes
+  useEffect(() => {
+    if (Object.keys(formData).length > 0) {
+      localStorage.setItem("onboarding_form_data", JSON.stringify(formData));
+      console.log("Saved form data to localStorage:", formData);
+    }
+  }, [formData]);
+
   const handleChange = (key: string, value: string) => {
+    console.log("Onboarding - received:", key, value);
     setFormData((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -20,13 +43,41 @@ function Onboarding() {
     if (stepIndex < onboardingSteps.length - 1) {
       setStepIndex((prev) => prev + 1);
     } else {
-      console.log("✅ Form submitted:", formData);
-      // optionally trigger backend call here
+      // Final submission
+      const finalData = {
+        ...formData,
+        submittedAt: new Date().toISOString(),
+        completedSteps: onboardingSteps.length,
+      };
+
+      // Save final data to localStorage
+      localStorage.setItem(
+        "onboarding_final_submission",
+        JSON.stringify(finalData)
+      );
+
+      console.log("✅ Form submitted:", finalData);
+      console.log("✅ Saved to localStorage as 'onboarding_final_submission'");
+
+      // Optional: Clear the progress data since form is completed
+      // localStorage.removeItem('onboarding_form_data');
+
+      // You can add your backend call here
+      // await submitToBackend(finalData);
     }
   };
 
   const handleBack = () => {
     setStepIndex((prev) => Math.max(prev - 1, 0));
+  };
+
+  // Optional: Clear localStorage function (for testing)
+  const clearLocalStorage = () => {
+    localStorage.removeItem("onboarding_form_data");
+    localStorage.removeItem("onboarding_final_submission");
+    setFormData({});
+    setStepIndex(0);
+    console.log("Cleared localStorage and reset form");
   };
 
   return (
@@ -44,6 +95,28 @@ function Onboarding() {
           },
         }}
       />
+
+      {/* Debug info - remove this in production */}
+      <Box
+        sx={{
+          mb: 2,
+          p: 2,
+          border: "1px solid #ccc",
+          borderRadius: 1,
+          fontSize: "0.8rem",
+        }}
+      >
+        <strong>Debug Info:</strong>
+        <br />
+        Current Step: {stepIndex + 1} of {onboardingSteps.length}
+        <br />
+        Form Data Keys: {Object.keys(formData).length}
+        <br />
+        <Button size="small" onClick={clearLocalStorage} sx={{ mt: 1 }}>
+          Clear localStorage (Debug)
+        </Button>
+      </Box>
+
       <Step step={currentStep} formData={formData} onChange={handleChange} />
 
       <Stack direction="row" justifyContent="space-between" mt={4}>

@@ -8,12 +8,13 @@ type CustomTextFieldProps = {
   onChange: (val: string) => void;
 };
 
+// Updated regex patterns that allow partial input during typing
 const regexMap: Record<CustomTextFieldProps["type"], RegExp> = {
   text: /.*/,
-  phone: /^\+?\d{7,15}$/,
-  email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-  money: /^\d+(\.\d{1,2})?$/,
-  number: /^\d+$/,
+  phone: /^[+]?[\d\s\-()]*$/, // Allow digits, spaces, hyphens, parentheses, and optional +
+  email: /^[^\s@]*@?[^\s@]*\.?[^\s@]*$/, // Allow partial email input
+  money: /^\d*\.?\d{0,2}$/, // Allow partial money input (digits with optional decimal and up to 2 decimal places)
+  number: /^\d*$/, // Allow partial number input (just digits)
 };
 
 export function CustomTextField({
@@ -22,9 +23,12 @@ export function CustomTextField({
   value,
   onChange,
 }: CustomTextFieldProps) {
+  // In CustomTextField
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
-    if (regexMap[type].test(val) || val === "") {
+    console.log("CustomTextField - received value:", val);
+    if (val === "" || regexMap[type].test(val)) {
+      console.log("CustomTextField - calling onChange with:", val);
       onChange(val);
     }
   };
@@ -45,7 +49,7 @@ export function CustomTextField({
           ? "email"
           : "text"
       }
-      style={{ marginBottom: "1rem" }}
+      sx={{ marginBottom: "1rem" }}
     />
   );
 }

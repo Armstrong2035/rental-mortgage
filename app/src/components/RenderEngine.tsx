@@ -31,6 +31,7 @@ export function RenderEngine({ question, value, onChange }: RenderEngineProps) {
       label={question.title}
       value={value}
       onChange={onChange}
+      type={question.type} // Add the type prop for CustomTextField
       {...("options" in question ? { options: question.options } : {})}
       {...("multiple" in question ? { multiple: question.multiple } : {})}
     />

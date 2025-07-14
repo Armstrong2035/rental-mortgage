@@ -26,7 +26,11 @@ export function GridSelect({
   const handleClick = (val: string) => {
     if (multiple) {
       const selected = new Set(value.split(","));
-      selected.has(val) ? selected.delete(val) : selected.add(val);
+      if (selected.has(val)) {
+        selected.delete(val);
+      } else {
+        selected.add(val);
+      }
       onChange(Array.from(selected).join(","));
     } else {
       onChange(val);
@@ -34,11 +38,7 @@ export function GridSelect({
   };
 
   return (
-    <Grid
-      container
-      spacing={5}
-      sx={{ width: "100%" }} // Use sx prop instead of inline style
-    >
+    <Grid container spacing={5} sx={{ width: "100%" }}>
       {options.map((opt) => {
         const selected = multiple
           ? value.split(",").includes(opt.value)
@@ -46,7 +46,6 @@ export function GridSelect({
 
         return (
           <Grid item size={{ xs: 6, sm: 4, md: 3 }} key={opt.value}>
-            {/* More responsive sizing */}
             <Box
               onClick={() => handleClick(opt.value)}
               sx={{

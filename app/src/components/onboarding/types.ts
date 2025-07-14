@@ -30,7 +30,8 @@ type ObjectOption = object;
 
 type DropdownQuestion = BaseQuestion & {
   type: "dropdown";
-  options: StringOption[];
+  options: StringOption[] | ObjectOption[];
+  multiple?: boolean; // allow multi-select?
 };
 
 export type Question = TextQuestion | DropdownQuestion | GridSelectQuestion;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, Typography, Box } from "@mui/material";
+import Image from "next/image"; // Ensure you have next/image installed
 
 export type GridOption = {
   label: string;
@@ -45,7 +46,6 @@ export function GridSelect({
 
         return (
           <Grid item size={{ xs: 6, sm: 4, md: 3 }} key={opt.value}>
-            {" "}
             {/* More responsive sizing */}
             <Box
               onClick={() => handleClick(opt.value)}
@@ -67,15 +67,12 @@ export function GridSelect({
               }}
             >
               {opt.imageUrl && (
-                <img
+                <Image
                   src={opt.imageUrl}
                   alt={opt.label}
-                  style={{
-                    maxWidth: "40px",
-                    maxHeight: "40px",
-                    marginBottom: "8px",
-                    objectFit: "contain",
-                  }}
+                  width={40}
+                  height={40}
+                  style={{ marginBottom: "8px", objectFit: "contain" }}
                 />
               )}
               <Typography

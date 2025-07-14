@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { onboardingSteps } from "./onboardingData";
 import Step from "./step/Step";
-import { Box, Button, Stack, Container } from "@mui/material";
+import { Button, Stack, Container } from "@mui/material";
 import { LinearProgress } from "@mui/material";
 
 function Onboarding() {
@@ -97,7 +97,7 @@ function Onboarding() {
       />
 
       {/* Debug info - remove this in production */}
-      <Box
+      {/* <Box
         sx={{
           mb: 2,
           p: 2,
@@ -115,7 +115,7 @@ function Onboarding() {
         <Button size="small" onClick={clearLocalStorage} sx={{ mt: 1 }}>
           Clear localStorage (Debug)
         </Button>
-      </Box>
+      </Box> */}
 
       <Step step={currentStep} formData={formData} onChange={handleChange} />
 

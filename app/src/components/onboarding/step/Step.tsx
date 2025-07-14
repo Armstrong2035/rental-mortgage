@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { OnboardingProps } from "../types";
-import { Box, Typography, Stack, Container, Grid } from "@mui/material";
+import { Box, Typography, Container, Grid } from "@mui/material";
 import { RenderEngine } from "../../RenderEngine";
 
 type Props = {

@@ -42,7 +42,7 @@ export default function Step({ step, formData, onChange }: Props) {
           const questionKey = question.title || `question-${index}`;
 
           return (
-            <Grid item size={gridSize} key={questionKey}>
+            <Grid size={gridSize} key={questionKey}>
               <RenderEngine
                 question={question}
                 value={formData[questionKey] || ""}

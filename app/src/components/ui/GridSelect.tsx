@@ -45,7 +45,7 @@ export function GridSelect({
           : value === opt.value;
 
         return (
-          <Grid item size={{ xs: 6, sm: 4, md: 3 }} key={opt.value}>
+          <Grid size={{ xs: 6, sm: 4, md: 3 }} key={opt.value}>
             <Box
               onClick={() => handleClick(opt.value)}
               sx={{

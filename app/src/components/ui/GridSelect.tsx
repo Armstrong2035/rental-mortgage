@@ -38,7 +38,7 @@ export function GridSelect({
   };
 
   return (
-    <Grid container spacing={5} sx={{ width: "100%" }}>
+    <Grid container spacing={5} alignSelf={"center"} sx={{ width: "80%" }}>
       {options.map((opt) => {
         const selected = multiple
           ? value.split(",").includes(opt.value)

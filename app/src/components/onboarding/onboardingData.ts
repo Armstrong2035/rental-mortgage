@@ -16,7 +16,7 @@ export const onboardingSteps: OnboardingProps[] = [
         options: ["Employed", "Between Jobs", "Business Owner / Freelancer"],
       },
       {
-        title: "Enter Yearly Income in AED",
+        title: "Enter Annual Income in AED",
         type: "money",
       },
       {
@@ -32,8 +32,8 @@ export const onboardingSteps: OnboardingProps[] = [
     questions: [
       { title: "Building name", type: "text" },
       { title: "Bedrooms", type: "number" },
-      { title: "Monthly Rent Amount (AED)", type: "money" },
       { title: "Location", type: "text" },
+      { title: "Landlord Name", type: "text" },
       {
         title: "Property Type",
         type: "dropdown",

@@ -49,19 +49,21 @@ export function GridSelect({
             <Box
               onClick={() => handleClick(opt.value)}
               sx={{
-                border: selected ? "2px solid #1976d2" : "1px solid #ccc",
+                border: selected ? "2px solid #26A69A" : "1px solid #ccc",
                 borderRadius: "8px",
                 padding: "1rem",
                 textAlign: "center",
                 cursor: "pointer",
-                width: "100%", // Ensure box fills grid item
-                minHeight: "120px", // Consistent height for all items
+                width: "100%",
+                minHeight: "120px",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
+                backgroundColor: selected ? "#E0F2F1" : "white",
+                color: selected ? "#004D40" : "inherit",
                 "&:hover": {
-                  backgroundColor: "#f5f5f5",
+                  backgroundColor: selected ? "#B2DFDB" : "#f5f5f5",
                 },
               }}
             >

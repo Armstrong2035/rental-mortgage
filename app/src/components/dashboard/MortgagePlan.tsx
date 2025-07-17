@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Typography, Divider, Stack, Paper } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Divider,
+  Stack,
+  Card,
+  CardContent,
+} from "@mui/material";
 
 export default function MortgagePlan() {
   const planDetailsArray = [
@@ -8,38 +15,41 @@ export default function MortgagePlan() {
     { key: "Interest Rate", value: "3.5%" },
   ];
   return (
-    <Paper
+    <Card
       sx={{
-        padding: 4,
+        padding: 2,
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
       }}
     >
-      <Typography>Mortgage Plan</Typography>
-      <Box
-        sx={{ display: "flex", justifyContent: "space-between", padding: 2 }}
-      >
-        <Typography>AED 10,000</Typography>
-        <Typography>Monthly</Typography>
-      </Box>
+      <CardContent>
+        <Typography>Mortgage Plan</Typography>
+        <Box
+          sx={{ display: "flex", justifyContent: "space-between", padding: 2 }}
+        >
+          <Typography>AED 10,000</Typography>
+          <Typography>Monthly</Typography>
+        </Box>
 
-      <Divider />
+        <Divider />
 
-      <Stack justifyContent={"space-between"}>
-        {planDetailsArray.map((details, index) => (
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              padding: 1,
-            }}
-          >
-            <Typography key={index}>{details.key}</Typography>
-            <Typography key={index}>{details.value}</Typography>
-          </Box>
-        ))}
-      </Stack>
-    </Paper>
+        <Stack justifyContent={"space-between"}>
+          {planDetailsArray.map((details, index) => (
+            <Box
+              key={index}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                padding: 1,
+              }}
+            >
+              <Typography>{details.key}</Typography>
+              <Typography>{details.value}</Typography>
+            </Box>
+          ))}
+        </Stack>
+      </CardContent>
+    </Card>
   );
 }

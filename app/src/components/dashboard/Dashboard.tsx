@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Paper } from "@mui/material";
+import { Container } from "@mui/material";
 import Header from "./Header";
 import ApprovalProgress from "./ApprovalProgress";
 import MortgageDetails from "./MortgageDetails";

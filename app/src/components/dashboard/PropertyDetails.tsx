@@ -1,6 +1,15 @@
 import React from "react";
 import Image from "next/image";
-import { Card, CardContent, Typography, Box, Grid } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Box,
+  Grid,
+  Divider,
+  Stack,
+} from "@mui/material";
+import propertyIllustration from "../../../public/property-illustration.png";
 
 const PropertyDetailsComponent = () => {
   const propertyData = {
@@ -12,48 +21,70 @@ const PropertyDetailsComponent = () => {
   };
 
   return (
-    <Card>
+    <Card sx={{ p: 4 }}>
       <CardContent>
-        <Typography variant="h6" gutterBottom>
-          Property Details
-        </Typography>
+        <Grid container spacing={2} direction={"row"} alignItems="center">
+          <Grid
+            size={{ md: 4, xs: 12 }}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Typography variant="h5" gutterBottom>
+              Property Details
+            </Typography>
 
-        <Box display="flex" justifyContent="center" mb={2}>
-          <Image
-            src="/property-illustration.png"
-            alt="Property illustration"
-            width={80}
-            height={80}
-          />
-        </Box>
+            <Image
+              src={propertyIllustration}
+              alt="Property illustration"
+              width={80}
+              height={80}
+            />
+          </Grid>
 
-        <Typography variant="h6" gutterBottom>
-          {propertyData.title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {propertyData.location}
-        </Typography>
+          <Grid
+            size={{ md: 8, xs: 12 }}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Box>
+              <Typography variant="h6" gutterBottom>
+                {propertyData.title}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {propertyData.location}
+              </Typography>
+            </Box>
 
-        <Typography variant="body2" color="text.secondary">
-          Property Type
-        </Typography>
-        <Typography variant="body1" fontWeight="bold">
-          {propertyData.propertyType}
-        </Typography>
+            <Divider sx={{ my: 2, width: "100%" }} />
 
-        <Typography variant="body2" color="text.secondary">
-          Bedrooms
-        </Typography>
-        <Typography variant="body1" fontWeight="bold">
-          {propertyData.bedrooms}
-        </Typography>
+            <Stack
+              direction={"column"}
+              spacing={1}
+              width="100%"
+              alignItems={"center"}
+            >
+              <Typography variant="body2" color="text.secondary">
+                Property Type: {propertyData.propertyType}
+              </Typography>
 
-        <Typography variant="body2" color="text.secondary">
-          Amount
-        </Typography>
-        <Typography variant="h6" fontWeight="bold">
-          {propertyData.amount}
-        </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Bedrooms: {propertyData.bedrooms}
+              </Typography>
+
+              <Typography variant="body2" color="text.secondary">
+                Amount: {propertyData.amount}
+              </Typography>
+            </Stack>
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   );

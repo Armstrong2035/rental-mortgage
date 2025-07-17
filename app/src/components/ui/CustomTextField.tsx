@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField } from "@mui/material";
 
 type CustomTextFieldProps = {
@@ -6,15 +6,16 @@ type CustomTextFieldProps = {
   type: "text" | "phone" | "email" | "money" | "number";
   value: string;
   onChange: (val: string) => void;
+  required?: boolean;
+  helperText?: string;
 };
 
-// Updated regex patterns that allow partial input during typing
 const regexMap: Record<CustomTextFieldProps["type"], RegExp> = {
   text: /.*/,
-  phone: /^[+]?[\d\s\-()]*$/, // Allow digits, spaces, hyphens, parentheses, and optional +
-  email: /^[^\s@]*@?[^\s@]*\.?[^\s@]*$/, // Allow partial email input
-  money: /^\d*\.?\d{0,2}$/, // Allow partial money input (digits with optional decimal and up to 2 decimal places)
-  number: /^\d*$/, // Allow partial number input (just digits)
+  phone: /^[+]?[\d\s\-()]*$/,
+  email: /^[^\s@]*@?[^\s@]*\.?[^\s@]*$/,
+  money: /^\d*\.?\d{0,2}$/,
+  number: /^\d*$/,
 };
 
 export function CustomTextField({
@@ -22,22 +23,29 @@ export function CustomTextField({
   type,
   value,
   onChange,
+  required = true,
+  helperText = "",
 }: CustomTextFieldProps) {
-  // In CustomTextField
+  const [touched, setTouched] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
-    console.log("CustomTextField - received value:", val);
     if (val === "" || regexMap[type].test(val)) {
-      console.log("CustomTextField - calling onChange with:", val);
       onChange(val);
     }
   };
+
+  const isError = required && touched && value.trim() === "";
 
   return (
     <TextField
       label={label}
       value={value}
       onChange={handleChange}
+      onBlur={() => setTouched(true)} // only set touched after user leaves the field
+      required={required}
+      error={isError}
+      helperText={isError ? "This field is required" : helperText}
       fullWidth
       variant="outlined"
       type={
@@ -49,7 +57,25 @@ export function CustomTextField({
           ? "email"
           : "text"
       }
-      sx={{ marginBottom: "1rem" }}
+      sx={{
+        marginBottom: "1rem",
+        fontFamily: "Plus Jakarta Sans",
+        "& input": {
+          fontFamily: "Plus Jakarta Sans",
+          fontWeight: 500,
+        },
+        "& .MuiOutlinedInput-root": {
+          "& fieldset": {
+            borderColor: "#00796B",
+          },
+          "&:hover fieldset": {
+            borderColor: "#004D40",
+          },
+          "&.Mui-focused fieldset": {
+            borderColor: "#26A69A",
+          },
+        },
+      }}
     />
   );
 }

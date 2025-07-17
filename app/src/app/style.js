@@ -1,0 +1,58 @@
+const textStyles = {
+  headingXL: {
+    fontFamily: "Plus Jakarta Sans",
+    fontWeight: 700,
+    fontStyle: "bold",
+    fontSize: "48.15px",
+    lineHeight: "58px",
+    letterSpacing: "-2%",
+    textAlign: "center",
+  },
+  headingSM: {
+    fontFamily: "Plus Jakarta Sans",
+    fontWeight: 700,
+    fontStyle: "bold",
+    fontSize: "17px",
+    lineHeight: "18.53px",
+    letterSpacing: "-2%",
+    textAlign: "center",
+  },
+  medium25: {
+    fontFamily: "Plus Jakarta Sans",
+    fontWeight: 500,
+    fontStyle: "medium",
+    fontSize: "25px",
+    lineHeight: "18.53px",
+    letterSpacing: "-2%",
+    textAlign: "center",
+  },
+  medium29: {
+    fontFamily: "Plus Jakarta Sans",
+    fontWeight: 500,
+    fontStyle: "medium",
+    fontSize: "29px",
+    lineHeight: "18.53px",
+    letterSpacing: "-2%",
+    textAlign: "center",
+  },
+  regular20: {
+    fontFamily: "Plus Jakarta Sans",
+    fontWeight: 400,
+    fontStyle: "normal",
+    fontSize: "20px",
+    lineHeight: "33px",
+    letterSpacing: "-2%",
+    textAlign: "center",
+  },
+  italic12: {
+    fontFamily: "Plus Jakarta Sans",
+    fontWeight: 300,
+    fontStyle: "italic",
+    fontSize: "12px",
+    lineHeight: "19.3px",
+    letterSpacing: "-2%",
+    textAlign: "center",
+  },
+};
+
+export { textStyles };

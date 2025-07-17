@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { onboardingSteps } from "./onboardingData";
 import Step from "./step/Step";
-import { Button, Stack, Container, Box } from "@mui/material";
-import { LinearProgress } from "@mui/material";
+import { Button, Stack, Container, LinearProgress } from "@mui/material";
 
 function Onboarding() {
   const [stepIndex, setStepIndex] = useState(0);
@@ -50,7 +49,6 @@ function Onboarding() {
         completedSteps: onboardingSteps.length,
       };
 
-      // Save final data to localStorage
       localStorage.setItem(
         "onboarding_final_submission",
         JSON.stringify(finalData)
@@ -58,12 +56,6 @@ function Onboarding() {
 
       console.log("✅ Form submitted:", finalData);
       console.log("✅ Saved to localStorage as 'onboarding_final_submission'");
-
-      // Optional: Clear the progress data since form is completed
-      // localStorage.removeItem('onboarding_form_data');
-
-      // You can add your backend call here
-      // await submitToBackend(finalData);
     }
   };
 
@@ -71,14 +63,20 @@ function Onboarding() {
     setStepIndex((prev) => Math.max(prev - 1, 0));
   };
 
-  // Optional: Clear localStorage function (for testing)
-  const clearLocalStorage = () => {
-    localStorage.removeItem("onboarding_form_data");
-    localStorage.removeItem("onboarding_final_submission");
-    setFormData({});
-    setStepIndex(0);
-    console.log("Cleared localStorage and reset form");
-  };
+  // const clearLocalStorage = () => {
+  //   localStorage.removeItem("onboarding_form_data");
+  //   localStorage.removeItem("onboarding_final_submission");
+  //   setFormData({});
+  //   setStepIndex(0);
+  //   console.log("Cleared localStorage and reset form");
+  // };
+
+  // ✅ Step validation logic
+  // ✅ Step validation logic without required flag
+  const isStepValid = currentStep.questions.every((question, index) => {
+    const key = question.title || `question-${index}`;
+    return formData[key] && formData[key].trim() !== "";
+  });
 
   return (
     <Container maxWidth="md" sx={{ mt: 10 }}>
@@ -89,35 +87,12 @@ function Onboarding() {
           height: 10,
           borderRadius: 5,
           mb: 3,
-          backgroundColor: "#e0e0e0", // background of the track
+          backgroundColor: "#e0e0e0",
           "& .MuiLinearProgress-bar": {
-            backgroundColor: "#005244", // color of the progress bar
+            backgroundColor: "#005244",
           },
         }}
       />
-
-      {/* Debug info - remove this in production */}
-      {process.env.NODE_ENV === "development" && (
-        <Box
-          sx={{
-            mb: 2,
-            p: 2,
-            border: "1px solid #ccc",
-            borderRadius: 1,
-            fontSize: "0.8rem",
-          }}
-        >
-          <strong>Debug Info:</strong>
-          <br />
-          Current Step: {stepIndex + 1} of {onboardingSteps.length}
-          <br />
-          Form Data Keys: {Object.keys(formData).length}
-          <br />
-          <Button size="small" onClick={clearLocalStorage} sx={{ mt: 1 }}>
-            Clear localStorage (Debug)
-          </Button>
-        </Box>
-      )}
 
       <Step step={currentStep} formData={formData} onChange={handleChange} />
 
@@ -133,10 +108,11 @@ function Onboarding() {
         <Button
           variant="contained"
           onClick={handleNext}
+          disabled={!isStepValid}
           sx={{
             backgroundColor: "#005244",
             "&:hover": {
-              backgroundColor: "#003f33", // Optional: darker shade on hover
+              backgroundColor: "#003f33",
             },
           }}
         >

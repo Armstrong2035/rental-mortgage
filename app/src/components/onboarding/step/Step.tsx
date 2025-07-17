@@ -2,6 +2,7 @@ import React from "react";
 import { OnboardingProps } from "../types";
 import { Box, Typography, Container, Grid } from "@mui/material";
 import { RenderEngine } from "../../RenderEngine";
+import { textStyles } from "../../../app/style.js"; // Adjust the import path as needed
 
 type Props = {
   step: OnboardingProps;
@@ -23,11 +24,17 @@ export default function Step({ step, formData, onChange }: Props) {
         },
       }}
     >
-      <Box>
-        <Typography variant="h5" fontWeight={600}>
+      <Box sx={{ mb: 4 }}>
+        <Typography
+          textAlign={"center"}
+          sx={{ ...textStyles.headingXL, color: "black" }}
+        >
           {step.title}
         </Typography>
-        <Typography variant="body1" color="text.secondary" mb={4}>
+        <Typography
+          textAlign={"center"}
+          sx={{ ...textStyles.regular20, fontSize: "14", color: "black" }}
+        >
           {step.description}
         </Typography>
       </Box>

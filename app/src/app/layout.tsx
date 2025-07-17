@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Rental Mortgage",
-  description: "Its like Tabby but for renting a home.",
+  description: "It's like Tabby but for renting a home.",
 };
 
 export default function RootLayout({
@@ -12,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={plusJakarta.className}>{children}</body>
     </html>
   );
 }

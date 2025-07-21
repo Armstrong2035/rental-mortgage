@@ -4,23 +4,24 @@ export const onboardingSteps: OnboardingProps[] = [
   {
     title: "Tenant Details",
     description: "Please enter your personal information.",
-
     questions: [
-      { title: "Full Name", type: "text" },
-      { title: "Email Address", type: "email" },
-      { title: "Phone Number", type: "phone" },
-
+      { title: "Full Name", key: "fullName", type: "text" },
+      { title: "Email Address", key: "emailAddress", type: "email" },
+      { title: "Phone Number", key: "phoneNumber", type: "phone" },
       {
         title: "Employment Status",
+        key: "employmentStatus",
         type: "dropdown",
         options: ["Employed", "Between Jobs", "Business Owner / Freelancer"],
       },
       {
         title: "Enter Annual Income in AED",
+        key: "annualIncome",
         type: "money",
       },
       {
         title: "Emirates ID number",
+        key: "emiratesId",
         type: "number",
       },
     ],
@@ -28,14 +29,14 @@ export const onboardingSteps: OnboardingProps[] = [
   {
     title: "Property Details",
     description: "Details about the property you intend to rent.",
-
     questions: [
-      { title: "Building name", type: "text" },
-      { title: "Bedrooms", type: "number" },
-      { title: "Location", type: "text" },
-      { title: "Landlord Name", type: "text" },
+      { title: "Building name", key: "buildingName", type: "text" },
+      { title: "Bedrooms", key: "bedrooms", type: "number" },
+      { title: "Location", key: "location", type: "text" },
+      { title: "Landlord Name", key: "landlordName", type: "text" },
       {
         title: "Property Type",
+        key: "propertyType",
         type: "dropdown",
         options: ["Apartment", "Villa", "Townhouse"],
       },
@@ -45,11 +46,17 @@ export const onboardingSteps: OnboardingProps[] = [
     title: "Payment Requirements",
     description: "How many cheques does your landlord require?",
     questions: [
-      { title: "Total Annual Rent", type: "money" },
+      { title: "Total Annual Rent", key: "totalAnnualRent", type: "money" },
       {
         title: "Number of Required Cheques",
+        key: "numberOfCheques",
         type: "dropdown",
         options: ["1", "2", "3", "4"],
+      },
+      {
+        title: "How much downpayment can you afford?",
+        key: "downpayment",
+        type: "money",
       },
     ],
   },
@@ -59,6 +66,7 @@ export const onboardingSteps: OnboardingProps[] = [
     questions: [
       {
         type: "gridSelect",
+        key: "selectedBank",
         options: [
           {
             label: "Abu Dhabi Commercial Bank",

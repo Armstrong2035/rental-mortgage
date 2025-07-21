@@ -5,6 +5,7 @@ My dynamic types (populated by API calls):
 */
 
 type BaseQuestion = {
+  key: string;
   title?: string;
 };
 type TextQuestion = BaseQuestion & {

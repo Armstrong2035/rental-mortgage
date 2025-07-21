@@ -6,8 +6,8 @@ import { textStyles } from "../../../app/style.js"; // Adjust the import path as
 
 type Props = {
   step: OnboardingProps;
-  formData: Record<string, string>;
-  onChange: (key: string, value: string) => void;
+  formData: Record<string, { title: string; value: string }>;
+  onChange: (key: string, title: string, value: string) => void;
 };
 
 export default function Step({ step, formData, onChange }: Props) {
@@ -45,8 +45,7 @@ export default function Step({ step, formData, onChange }: Props) {
           const gridSize =
             question.type === "gridSelect" ? { xs: 12 } : { sm: 12, md: 6 };
 
-          // Use title if available, otherwise create a fallback key
-          const questionKey = question.title || `question-${index}`;
+          const questionKey = question.key;
 
           return (
             <Grid size={gridSize} key={questionKey}>
@@ -60,7 +59,7 @@ export default function Step({ step, formData, onChange }: Props) {
                     "for key:",
                     questionKey
                   );
-                  onChange(questionKey, val);
+                  onChange(questionKey, val, question.title);
                 }}
               />
             </Grid>

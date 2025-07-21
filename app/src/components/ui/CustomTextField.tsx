@@ -8,6 +8,7 @@ type CustomTextFieldProps = {
   onChange: (val: string) => void;
   required?: boolean;
   helperText?: string;
+  placeholder?: string;
 };
 
 const regexMap: Record<CustomTextFieldProps["type"], RegExp> = {
@@ -25,6 +26,7 @@ export function CustomTextField({
   onChange,
   required = true,
   helperText = "",
+  placeholder = "",
 }: CustomTextFieldProps) {
   const [touched, setTouched] = useState(false);
 
@@ -47,6 +49,7 @@ export function CustomTextField({
       error={isError}
       helperText={isError ? "This field is required" : helperText}
       fullWidth
+      placeholder={placeholder === "" ? "" : placeholder}
       variant="outlined"
       type={
         type === "money"

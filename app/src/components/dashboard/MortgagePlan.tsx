@@ -7,6 +7,7 @@ import {
   Card,
   CardContent,
 } from "@mui/material";
+import { textStyles } from "@/app/style";
 
 export default function MortgagePlan() {
   const planDetailsArray = [
@@ -23,29 +24,44 @@ export default function MortgagePlan() {
         justifyContent: "flex-start",
       }}
     >
-      <CardContent>
-        <Typography>Mortgage Plan</Typography>
-        <Box
-          sx={{ display: "flex", justifyContent: "space-between", padding: 2 }}
+      <CardContent
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+        }}
+      >
+        <Typography
+          sx={{
+            ...textStyles.light16,
+            fontSize: 14,
+            mb: 2,
+          }}
         >
-          <Typography>AED 10,000</Typography>
-          <Typography>Monthly</Typography>
+          Mortgage Plan
+        </Typography>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography sx={{ ...textStyles.medium25, fontSize: "16px" }}>
+            AED 10,000 /Month
+          </Typography>
         </Box>
 
-        <Divider />
+        <Divider sx={{ width: "100%", my: 2 }} />
 
-        <Stack justifyContent={"space-between"}>
+        <Stack justifyContent={"space-between"} sx={{}}>
           {planDetailsArray.map((details, index) => (
             <Box
               key={index}
               sx={{
                 display: "flex",
-                justifyContent: "space-between",
+                alignItems: "flex-start",
                 padding: 1,
+                width: "100%",
               }}
             >
-              <Typography>{details.key}</Typography>
-              <Typography>{details.value}</Typography>
+              <Typography sx={{ ...textStyles.medium25, fontSize: "16px" }}>
+                {details.key} : {details.value}
+              </Typography>
             </Box>
           ))}
         </Stack>

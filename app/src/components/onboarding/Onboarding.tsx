@@ -3,10 +3,13 @@ import React, { useState, useEffect } from "react";
 import { onboardingSteps } from "./onboardingData";
 import Step from "./step/Step";
 import { Button, Stack, Container, LinearProgress } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 function Onboarding() {
   const [stepIndex, setStepIndex] = useState(0);
   const [formData, setFormData] = useState<Record<string, string>>({});
+
+  const router = useRouter();
 
   const currentStep = onboardingSteps[stepIndex];
   const progress = ((stepIndex + 1) / onboardingSteps.length) * 100;
@@ -33,9 +36,13 @@ function Onboarding() {
     }
   }, [formData]);
 
-  const handleChange = (key: string, value: string) => {
+  const handleChange = (key: string, value: string, title: string) => {
     console.log("Onboarding - received:", key, value);
-    setFormData((prev) => ({ ...prev, [key]: value }));
+    setFormData((prev) => ({
+      ...prev,
+
+      [key]: { title, value },
+    }));
   };
 
   const handleNext = () => {
@@ -54,6 +61,9 @@ function Onboarding() {
         JSON.stringify(finalData)
       );
 
+      router.push("/dashboard"); // Redirect to dashboard after submission
+      console.log("✅ Onboarding completed, redirecting to dashboard...");
+
       console.log("✅ Form submitted:", finalData);
       console.log("✅ Saved to localStorage as 'onboarding_final_submission'");
     }
@@ -63,18 +73,18 @@ function Onboarding() {
     setStepIndex((prev) => Math.max(prev - 1, 0));
   };
 
-  // const clearLocalStorage = () => {
-  //   localStorage.removeItem("onboarding_form_data");
-  //   localStorage.removeItem("onboarding_final_submission");
-  //   setFormData({});
-  //   setStepIndex(0);
-  //   console.log("Cleared localStorage and reset form");
-  // };
+  const clearLocalStorage = () => {
+    localStorage.removeItem("onboarding_form_data");
+    localStorage.removeItem("onboarding_final_submission");
+    setFormData({});
+    setStepIndex(0);
+    console.log("Cleared localStorage and reset form");
+  };
 
   // ✅ Step validation logic
   // ✅ Step validation logic without required flag
   const isStepValid = currentStep.questions.every((question, index) => {
-    const key = question.title || `question-${index}`;
+    const key = question.key; // ✅ use the right key
     return formData[key] && formData[key].trim() !== "";
   });
 
@@ -93,6 +103,10 @@ function Onboarding() {
           },
         }}
       />
+
+      <Button onClick={clearLocalStorage} variant="outlined" sx={{ mb: 2 }}>
+        Clear Data
+      </Button>
 
       <Step step={currentStep} formData={formData} onChange={handleChange} />
 

@@ -53,6 +53,33 @@ const textStyles = {
     letterSpacing: "-2%",
     textAlign: "center",
   },
+  light16: {
+    fontFamily: "Plus Jakarta Sans",
+    fontWeight: 300,
+    fontStyle: "normal",
+    fontSize: "16px",
+    lineHeight: "19.3px",
+    letterSpacing: "-2%",
+    textAlign: "center",
+  },
+  extraLight18: {
+    fontFamily: "Plus Jakarta Sans",
+    fontWeight: 200,
+    fontStyle: "ExtraLight",
+    fontSize: "18px",
+    lineHeight: "18.53px",
+    letterSpacing: "-2%",
+    textAlign: "center",
+  },
+  regular16: {
+    fontFamily: "Plus Jakarta Sans",
+    fontWeight: 400,
+    fontStyle: "normal",
+    fontSize: "16px",
+    lineHeight: "19.3px",
+    letterSpacing: "-2%",
+    textAlign: "center",
+  },
 };
 
 export { textStyles };

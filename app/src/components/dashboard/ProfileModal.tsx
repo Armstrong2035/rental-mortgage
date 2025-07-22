@@ -26,6 +26,8 @@ export default function ProfileForm({
     setFormData((prev) => ({ ...prev, [key]: value }));
   };
 
+  console.log(data);
+
   return (
     <Container sx={{}}>
       {/* Header */}

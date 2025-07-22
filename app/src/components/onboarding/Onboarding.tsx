@@ -5,9 +5,11 @@ import Step from "./step/Step";
 import { Button, Stack, Container, LinearProgress } from "@mui/material";
 import { useRouter } from "next/navigation";
 
+type FormValue = { title: string; value: string };
+
 function Onboarding() {
   const [stepIndex, setStepIndex] = useState(0);
-  const [formData, setFormData] = useState<Record<string, string>>({});
+  const [formData, setFormData] = useState<Record<string, FormValue>>({});
 
   const router = useRouter();
 
@@ -40,7 +42,6 @@ function Onboarding() {
     console.log("Onboarding - received:", key, value);
     setFormData((prev) => ({
       ...prev,
-
       [key]: { title, value },
     }));
   };
@@ -85,7 +86,8 @@ function Onboarding() {
   // ✅ Step validation logic without required flag
   const isStepValid = currentStep.questions.every((question, index) => {
     const key = question.key; // ✅ use the right key
-    return formData[key] && formData[key].trim() !== "";
+    const value = formData[key]?.value;
+    return typeof value === "string" && value.trim() !== "";
   });
 
   return (

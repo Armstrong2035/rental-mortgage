@@ -51,15 +51,9 @@ export default function Step({ step, formData, onChange }: Props) {
             <Grid size={gridSize} key={questionKey}>
               <RenderEngine
                 question={question}
-                value={formData[questionKey] || ""}
+                value={formData[questionKey]?.value || ""}
                 onChange={(val) => {
-                  console.log(
-                    "Step - received value:",
-                    val,
-                    "for key:",
-                    questionKey
-                  );
-                  onChange(questionKey, val, question.title);
+                  onChange(questionKey, val, question.title!); // ✅ send key, title, value
                 }}
               />
             </Grid>

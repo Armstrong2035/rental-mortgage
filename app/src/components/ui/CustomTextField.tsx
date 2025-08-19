@@ -67,6 +67,13 @@ export function CustomTextField({
           fontFamily: "Plus Jakarta Sans",
           fontWeight: 500,
         },
+        "& input::placeholder": {
+          color: "#999999",
+          opacity: 1,
+        },
+        "& .MuiOutlinedInput-root.Mui-focused input::placeholder": {
+          color: "#666666",
+        },
         "& .MuiOutlinedInput-root": {
           "& fieldset": {
             borderColor: "#00796B",
@@ -77,6 +84,13 @@ export function CustomTextField({
           "&.Mui-focused fieldset": {
             borderColor: "#26A69A",
           },
+        },
+        "& .MuiInputLabel-root": {
+          color: "#777777",
+          fontFamily: "Plus Jakarta Sans",
+        },
+        "& .MuiInputLabel-root.Mui-focused": {
+          color: "#26A69A",
         },
       }}
     />

@@ -2,7 +2,7 @@ import React from "react";
 import { OnboardingProps } from "../types";
 import { Box, Typography, Container, Grid } from "@mui/material";
 import { RenderEngine } from "../../RenderEngine";
-import { textStyles } from "../../../app/style.js"; // Adjust the import path as needed
+import { textStyles } from "../../../app/style.js";
 
 type Props = {
   step: OnboardingProps;
@@ -16,7 +16,7 @@ export default function Step({ step, formData, onChange }: Props) {
     <Container
       sx={{
         mt: 10,
-        height: "50vh",
+        height: "70%",
         overflowY: "scroll",
         scrollbarWidth: "none", // Firefox
         "&::-webkit-scrollbar": {

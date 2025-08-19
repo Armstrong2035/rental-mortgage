@@ -6,8 +6,6 @@ import {
   Typography,
   Stack,
   Avatar,
-  Dialog,
-  DialogContent,
   IconButton,
   Container,
 } from "@mui/material";
@@ -19,19 +17,19 @@ export type OnboardingFormData = {
   emailAddress: string;
   phoneNumber: string;
   employmentStatus: "Employed" | "Between Jobs" | "Business Owner / Freelancer";
-  annualIncome: string; // or number if you plan to parse it
+  annualIncome: string;
   emiratesId: string;
   buildingName: string;
-  bedrooms: string; // or number
+  bedrooms: string;
   location: string;
   landlordName: string;
   propertyType: "Apartment" | "Villa" | "Townhouse";
-  totalAnnualRent: string; // or number
+  totalAnnualRent: string;
   numberOfCheques: "1" | "2" | "3" | "4";
-  downpayment: string; // or number
-  selectedBank: string; // use a union of bank values if you want strict typing
+  downpayment: string;
+  selectedBank: string;
   completedSteps: number;
-  submittedAt: string; // ISO date string
+  submittedAt: string;
 };
 
 export default function Header({ data }: { data: OnboardingFormData | null }) {
@@ -45,9 +43,9 @@ export default function Header({ data }: { data: OnboardingFormData | null }) {
         alignItems="center"
         sx={{
           padding: "1rem 2rem",
-          backgroundColor: "#004D40",
+          background: "linear-gradient(90deg, #00695C, #004D40)",
           color: "#ffffff",
-          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
           borderRadius: 2,
         }}
       >
@@ -55,7 +53,7 @@ export default function Header({ data }: { data: OnboardingFormData | null }) {
           variant="h6"
           sx={{
             fontFamily: "Plus Jakarta Sans",
-            fontWeight: 600,
+            fontWeight: 700,
             letterSpacing: "-0.5px",
           }}
         >
@@ -63,7 +61,18 @@ export default function Header({ data }: { data: OnboardingFormData | null }) {
         </Typography>
 
         <Avatar
-          sx={{ bgcolor: "#26A69A", width: 40, height: 40, cursor: "pointer" }}
+          sx={{
+            bgcolor: "#26C6DA",
+            width: 42,
+            height: 42,
+            cursor: "pointer",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.25)",
+            transition: "transform 0.2s ease, box-shadow 0.2s ease",
+            "&:hover": {
+              transform: "scale(1.05)",
+              boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
+            },
+          }}
           onClick={() => setOpen(true)}
         >
           S
@@ -74,13 +83,13 @@ export default function Header({ data }: { data: OnboardingFormData | null }) {
         <Box
           sx={{
             position: "fixed",
-            top: "72px", // height of your header
+            top: "72px",
             left: 0,
             right: 0,
             bottom: 0,
-            backdropFilter: "blur(8px)",
-            backgroundColor: "rgba(255, 255, 255, 0.6)",
-            zIndex: 1200, // just below MUI AppBar zIndex
+            backdropFilter: "blur(10px)",
+            backgroundColor: "rgba(0, 77, 64, 0.25)",
+            zIndex: 1200,
             overflowY: "auto",
           }}
         >
@@ -88,9 +97,19 @@ export default function Header({ data }: { data: OnboardingFormData | null }) {
             <Box sx={{ position: "relative", pt: 4 }}>
               <IconButton
                 onClick={() => setOpen(false)}
-                sx={{ position: "absolute", top: 16, right: 16, zIndex: 10 }}
+                sx={{
+                  position: "absolute",
+                  top: 16,
+                  right: 16,
+                  zIndex: 10,
+                  bgcolor: "rgba(255,255,255,0.9)",
+                  "&:hover": {
+                    bgcolor: "rgba(255,255,255,1)",
+                  },
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+                }}
               >
-                <CloseIcon />
+                <CloseIcon sx={{ color: "#004D40" }} />
               </IconButton>
               <ProfileForm data={data} />
             </Box>

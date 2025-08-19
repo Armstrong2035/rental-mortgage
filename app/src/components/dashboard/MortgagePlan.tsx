@@ -6,6 +6,7 @@ import {
   Stack,
   Card,
   CardContent,
+  Chip,
 } from "@mui/material";
 import { textStyles } from "@/app/style";
 
@@ -15,52 +16,74 @@ export default function MortgagePlan() {
     { key: "Total Payment", value: "AED 110,000" },
     { key: "Interest Rate", value: "3.5%" },
   ];
+
   return (
     <Card
       sx={{
-        padding: 2,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
+        borderRadius: 4,
+        overflow: "hidden",
+        boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+        background: "linear-gradient(180deg, #ffffff 0%, #fafafa 100%)",
       }}
     >
-      <CardContent
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-        }}
-      >
+      <CardContent sx={{ p: 4 }}>
         <Typography
           sx={{
             ...textStyles.light16,
-            fontSize: 14,
-            mb: 2,
+            fontSize: 15,
+            fontWeight: 600,
+            color: "#004D40",
+            mb: 3,
+            letterSpacing: "-0.3px",
           }}
         >
           Mortgage Plan
         </Typography>
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography sx={{ ...textStyles.medium25, fontSize: "16px" }}>
-            AED 10,000 /Month
-          </Typography>
-        </Box>
 
-        <Divider sx={{ width: "100%", my: 2 }} />
+        <Chip
+          label="AED 10,000 / Month"
+          sx={{
+            bgcolor: "#004D40",
+            color: "#fff",
+            fontWeight: 600,
+            fontSize: 16,
+            borderRadius: "12px",
+            px: 2,
+            py: 1,
+            mb: 3,
+            boxShadow: "0 3px 10px rgba(0,77,64,0.2)",
+          }}
+        />
 
-        <Stack justifyContent={"space-between"} sx={{}}>
+        <Divider sx={{ width: "100%", my: 3 }} />
+
+        <Stack spacing={2} sx={{ width: "100%" }}>
           {planDetailsArray.map((details, index) => (
             <Box
               key={index}
               sx={{
                 display: "flex",
-                alignItems: "flex-start",
-                padding: 1,
+                justifyContent: "space-between",
                 width: "100%",
               }}
             >
-              <Typography sx={{ ...textStyles.medium25, fontSize: "16px" }}>
-                {details.key} : {details.value}
+              <Typography
+                sx={{
+                  fontSize: 15,
+                  color: "#616161",
+                  fontWeight: 500,
+                }}
+              >
+                {details.key}
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: 15,
+                  fontWeight: 700,
+                  color: "#004D40",
+                }}
+              >
+                {details.value}
               </Typography>
             </Box>
           ))}

@@ -106,9 +106,9 @@ function Onboarding() {
         }}
       />
 
-      <Button onClick={clearLocalStorage} variant="outlined" sx={{ mb: 2 }}>
+      {/* <Button onClick={clearLocalStorage} variant="outlined" sx={{ mb: 2 }}>
         Clear Data
-      </Button>
+      </Button> */}
 
       <Step step={currentStep} formData={formData} onChange={handleChange} />
 

@@ -9,19 +9,19 @@ export type OnboardingFormData = {
   emailAddress: string;
   phoneNumber: string;
   employmentStatus: "Employed" | "Between Jobs" | "Business Owner / Freelancer";
-  annualIncome: string; // or number if you plan to parse it
+  annualIncome: string;
   emiratesId: string;
   buildingName: string;
-  bedrooms: string; // or number
+  bedrooms: string;
   location: string;
   landlordName: string;
   propertyType: "Apartment" | "Villa" | "Townhouse";
-  totalAnnualRent: string; // or number
+  totalAnnualRent: string;
   numberOfCheques: "1" | "2" | "3" | "4";
-  downpayment: string; // or number
-  selectedBank: string; // use a union of bank values if you want strict typing
+  downpayment: string;
+  selectedBank: string;
   completedSteps: number;
-  submittedAt: string; // ISO date string
+  submittedAt: string;
 };
 
 export default function MortgageDetails({
@@ -30,11 +30,11 @@ export default function MortgageDetails({
   data: OnboardingFormData | null;
 }) {
   return (
-    <Grid container>
-      <Grid size={{ md: 4 }} sx={{ padding: 2 }}>
+    <Grid container spacing={4} sx={{ mt: 4, width: "100%" }}>
+      <Grid size={{ md: 4, xs: 12 }}>
         <MortgagePlan />
       </Grid>
-      <Grid size={{ md: 8 }} sx={{ padding: 2 }}>
+      <Grid size={{ md: 8, xs: 12 }}>
         <PropertyDetailsComponent />
       </Grid>
     </Grid>

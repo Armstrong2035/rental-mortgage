@@ -38,7 +38,7 @@ export function GridSelect({
   };
 
   return (
-    <Grid container spacing={5} alignSelf={"center"} sx={{ width: "80%" }}>
+    <Grid container spacing={5} sx={{}}>
       {options.map((opt) => {
         const selected = multiple
           ? value.split(",").includes(opt.value)
@@ -51,7 +51,7 @@ export function GridSelect({
               sx={{
                 border: selected ? "2px solid #26A69A" : "1px solid #ccc",
                 borderRadius: "8px",
-                padding: "1rem",
+
                 textAlign: "center",
                 cursor: "pointer",
                 width: "100%",

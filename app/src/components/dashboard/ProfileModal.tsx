@@ -1,16 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Box,
-  Grid,
-  Typography,
-  Avatar,
-  Button,
-  Stack,
-  Divider,
-  Container,
-} from "@mui/material";
+import { Box, Grid, Typography, Avatar, Stack, Container } from "@mui/material";
 import { RenderEngine } from "../RenderEngine";
 import { profileQuestions } from "./profileData";
 import { OnboardingFormData } from "./Header";

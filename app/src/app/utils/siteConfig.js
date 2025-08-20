@@ -34,7 +34,7 @@ const header = {
 
 // Hero Section
 const hero = {
-  title: ["No more big rent cheques.", "Pay monthly,", "live stress-free."],
+  title: ["No more big rent cheques.", "Pay monthly,", "Live stress-free."],
   projectName: "Your rent, simplified. One month at a time.",
   projectTypes: "Monthly rental mortgage support",
   description:
@@ -45,34 +45,34 @@ const hero = {
 };
 
 // Location Section
-const location = {
-  title: "Location",
-  subtitle: "Prime Intersection with Seamless Connectivity",
-  description:
-    "Located within Expo Living, Terra Heights offers a unique blend of modern convenience and natural tranquility.",
-  proximities: [
-    "5 Minutes – Expo City Dubai",
-    "10 Minutes – Al Maktoum International Airport",
-    "15 Minutes – Dubai Marina",
-    "20 Minutes – Downtown Dubai",
-  ],
-  additionalInfo:
-    "Its strategic position near major transportation hubs makes commuting effortless while ensuring residents remain connected to Dubai’s key attractions.",
-  startingPrice: "Starting Price: AED 1.4M",
-  masterPlan:
-    "https://res.cloudinary.com/dulafqaoq/image/upload/v1744090334/Terra_Heights_page-0006_iakn7k.jpg",
-  apartmentDetails: [
-    { label: "Unit Types", value: "1 & 2 Bedrooms" },
-    { label: "Area Range", value: "749 - 1,118 sq.ft" },
-    { label: "Handover Date", value: "2028" },
-    {
-      label: "Payment Plan",
-      value:
-        "Secure your home with just 10% down, followed by easy installments during construction, and 30% on handover in 2028.",
-    },
-    /*{ label: "Deposit Required", value: "20%" },*/
-  ],
-};
+// const location = {
+//   title: "Location",
+//   subtitle: "Prime Intersection with Seamless Connectivity",
+//   description:
+//     "Located within Expo Living, Terra Heights offers a unique blend of modern convenience and natural tranquility.",
+//   proximities: [
+//     "5 Minutes – Expo City Dubai",
+//     "10 Minutes – Al Maktoum International Airport",
+//     "15 Minutes – Dubai Marina",
+//     "20 Minutes – Downtown Dubai",
+//   ],
+//   additionalInfo:
+//     "Its strategic position near major transportation hubs makes commuting effortless while ensuring residents remain connected to Dubai’s key attractions.",
+//   startingPrice: "Starting Price: AED 1.4M",
+//   masterPlan:
+//     "https://res.cloudinary.com/dulafqaoq/image/upload/v1744090334/Terra_Heights_page-0006_iakn7k.jpg",
+//   apartmentDetails: [
+//     { label: "Unit Types", value: "1 & 2 Bedrooms" },
+//     { label: "Area Range", value: "749 - 1,118 sq.ft" },
+//     { label: "Handover Date", value: "2028" },
+//     {
+//       label: "Payment Plan",
+//       value:
+//         "Secure your home with just 10% down, followed by easy installments during construction, and 30% on handover in 2028.",
+//     },
+//     /*{ label: "Deposit Required", value: "20%" },*/
+//   ],
+// };
 
 // Gallery Section
 // const gallery = {
@@ -309,27 +309,6 @@ const partners = {
 //     defaultSource: "website",
 //     projectName: "Sobha One Element",
 //   },
-// };
-
-// Analytics and Tracking
-// const analytics = {
-//   googleAnalyticsId: "AW-16909263453",
-//   facebookPixelId: "1659058738047957",
-//   conversionEvents: {
-//     googleConversionId: "AW-16909263453/jTrDCNHE5qYaEN3E-_4-",
-//     facebookEventName: "Lead",
-//   },
-// };
-
-// Firebase Configuration
-// const firebaseConfig = {
-//   apiKey: "AIzaSyD2mT9KA6N7zTRsz-TUDnpfllyBfnQTQH4",
-//   authDomain: "subarashi-real-estate.firebaseapp.com",
-//   projectId: "subarashi-real-estate",
-//   storageBucket: "subarashi-real-estate.appspot.com",
-//   messagingSenderId: "284995572575",
-//   appId: "1:284995572575:web:4019d4060000a3a8c81cea",
-//   measurementId: "G-LMKH4GB7LP",
 // };
 
 // Export all configuration sections

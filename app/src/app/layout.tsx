@@ -18,7 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={plusJakarta.className}>{children}</body>
+      <body
+        style={{ backgroundColor: "#EBEFEB", padding: 0, margin: 0 }}
+        className={plusJakarta.className}
+      >
+        {children}
+      </body>
     </html>
   );
 }

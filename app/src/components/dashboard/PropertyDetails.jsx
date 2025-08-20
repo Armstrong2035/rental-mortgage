@@ -10,14 +10,15 @@ import {
   Stack,
 } from "@mui/material";
 import propertyIllustration from "../../../public/property-illustration.png";
+import textStyles from "@/app/styles";
 
-const PropertyDetailsComponent = () => {
+const PropertyDetailsComponent = ({ data }) => {
   const propertyData = {
-    title: "The Address Opera T2",
-    location: "JVC, Dubai - United Arab Emirates",
-    propertyType: "Apartment",
-    bedrooms: "2",
-    amount: "AED 100,000",
+    title: data.buildingName.value,
+    location: data.location.value,
+    propertyType: data.propertyType.value,
+    bedrooms: data.bedrooms.value,
+    amount: `${parseFloat(data.totalAnnualRent.value).toLocaleString()} AED`,
   };
 
   return (
@@ -49,7 +50,10 @@ const PropertyDetailsComponent = () => {
               height={100}
               style={{ marginBottom: 16 }}
             />
-            <Typography variant="h6" sx={{ fontWeight: 700, color: "#004D40" }}>
+            <Typography
+              variant="h6"
+              sx={{ ...textStyles.light16, fontWeight: 700, color: "#004D40" }}
+            >
               Property Details
             </Typography>
           </Grid>
@@ -69,11 +73,15 @@ const PropertyDetailsComponent = () => {
             <Box mb={2}>
               <Typography
                 variant="h6"
-                sx={{ fontWeight: 700, color: "#212121" }}
+                sx={{
+                  ...textStyles.light16,
+                  fontWeight: 700,
+                  color: "#212121",
+                }}
               >
                 {propertyData.title}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography sx={{ ...textStyles.regular20 }}>
                 {propertyData.location}
               </Typography>
             </Box>
@@ -81,33 +89,45 @@ const PropertyDetailsComponent = () => {
             <Divider sx={{ my: 2 }} />
 
             <Stack spacing={1.5}>
-              <Typography variant="body2" sx={{ color: "#616161" }}>
-                Property Type:{" "}
-                <Box
-                  component="span"
-                  sx={{ color: "#004D40", fontWeight: 600 }}
+              <Box component="span" sx={{ color: "#004D40", fontWeight: 600 }}>
+                <Typography
+                  variant="body2"
+                  sx={{ ...textStyles.light16, color: "#616161" }}
                 >
+                  Property Type: {"   "}
                   {propertyData.propertyType}
-                </Box>
-              </Typography>
-              <Typography variant="body2" sx={{ color: "#616161" }}>
-                Bedrooms:{" "}
-                <Box
-                  component="span"
-                  sx={{ color: "#004D40", fontWeight: 600 }}
+                </Typography>
+              </Box>
+
+              <Box
+                component="span"
+                sx={{
+                  ...textStyles.light16,
+                  color: "#004D40",
+                  fontWeight: 600,
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  sx={{ ...textStyles.light16, color: "#616161" }}
                 >
+                  Bedrooms: {"   "}
                   {propertyData.bedrooms}
-                </Box>
-              </Typography>
-              <Typography variant="body2" sx={{ color: "#616161" }}>
-                Amount:{" "}
-                <Box
-                  component="span"
-                  sx={{ color: "#004D40", fontWeight: 600 }}
-                >
+                </Typography>
+              </Box>
+              <Box
+                component="span"
+                sx={{
+                  ...textStyles.light16,
+                  color: "#004D40",
+                  ml: 0.5,
+                }}
+              >
+                <Typography sx={{ ...textStyles.light16, color: "#616161" }}>
+                  Amount:{"   "}
                   {propertyData.amount}
-                </Box>
-              </Typography>
+                </Typography>
+              </Box>
             </Stack>
           </Grid>
         </Grid>

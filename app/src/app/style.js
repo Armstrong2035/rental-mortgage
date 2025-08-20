@@ -6,7 +6,7 @@ const textStyles = {
     fontSize: "48.15px",
     lineHeight: "58px",
     letterSpacing: "-2%",
-    textAlign: "center",
+    textAlign: "center", 
   },
   headingSM: {
     fontFamily: "Plus Jakarta Sans",

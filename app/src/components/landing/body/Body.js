@@ -3,12 +3,7 @@ import Hero from "./hero/Hero";
 import TechnicalDetails from "./technicalDetails/TechnicalDetails";
 import { Box, Divider, Stack, useMediaQuery, useTheme } from "@mui/material";
 
-export default function Body({
-  images,
-  heroImage,
-  masterPlan,
-  floorPlanImages,
-}) {
+export default function Body({ heroImage }) {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 

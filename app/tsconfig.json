@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/page.jsx"
-  ],
+, "src/components/dashboard/PropertyDetails.jsx", "src/components/dashboard/MortgagePlan.jsx"  ],
   "exclude": ["node_modules"]
 }

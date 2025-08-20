@@ -35,9 +35,16 @@ export function Dropdown({
       sx={{
         marginBottom: "1rem",
         fontFamily: "Plus Jakarta Sans",
-        "& .MuiInputBase-input": {
+        "& input": {
           fontFamily: "Plus Jakarta Sans",
           fontWeight: 500,
+        },
+        "& input::placeholder": {
+          color: "#999999",
+          opacity: 1,
+        },
+        "& .MuiOutlinedInput-root.Mui-focused input::placeholder": {
+          color: "#666666",
         },
         "& .MuiOutlinedInput-root": {
           "& fieldset": {
@@ -49,6 +56,13 @@ export function Dropdown({
           "&.Mui-focused fieldset": {
             borderColor: "#26A69A",
           },
+        },
+        "& .MuiInputLabel-root": {
+          color: "#777777",
+          fontFamily: "Plus Jakarta Sans",
+        },
+        "& .MuiInputLabel-root.Mui-focused": {
+          color: "#26A69A",
         },
       }}
     >

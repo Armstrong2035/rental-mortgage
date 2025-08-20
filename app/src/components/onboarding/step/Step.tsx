@@ -39,8 +39,14 @@ export default function Step({ step, formData, onChange }: Props) {
         </Typography>
       </Box>
 
-      <Grid container spacing={3} alignItems={"center"} sx={{ width: "100%" }}>
-        {step.questions.map((question, index) => {
+      <Grid
+        container
+        spacing={3}
+        alignItems={"center"}
+        justifyContent={"center"}
+        sx={{ width: "100%" }}
+      >
+        {step.questions.map((question) => {
           // For gridSelect type, use full width, otherwise use responsive sizing
           const gridSize =
             question.type === "gridSelect" ? { xs: 12 } : { sm: 12, md: 6 };

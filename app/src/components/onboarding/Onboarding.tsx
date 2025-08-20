@@ -74,17 +74,17 @@ function Onboarding() {
     setStepIndex((prev) => Math.max(prev - 1, 0));
   };
 
-  const clearLocalStorage = () => {
-    localStorage.removeItem("onboarding_form_data");
-    localStorage.removeItem("onboarding_final_submission");
-    setFormData({});
-    setStepIndex(0);
-    console.log("Cleared localStorage and reset form");
-  };
+  // const clearLocalStorage = () => {
+  //   localStorage.removeItem("onboarding_form_data");
+  //   localStorage.removeItem("onboarding_final_submission");
+  //   setFormData({});
+  //   setStepIndex(0);
+  //   console.log("Cleared localStorage and reset form");
+  // };
 
   // ✅ Step validation logic
   // ✅ Step validation logic without required flag
-  const isStepValid = currentStep.questions.every((question, index) => {
+  const isStepValid = currentStep.questions.every((question) => {
     const key = question.key; // ✅ use the right key
     const value = formData[key]?.value;
     return typeof value === "string" && value.trim() !== "";
@@ -117,6 +117,10 @@ function Onboarding() {
           variant="outlined"
           onClick={handleBack}
           disabled={stepIndex === 0}
+          sx={{
+            borderColor: "#005244",
+            color: "#005244",
+          }}
         >
           Back
         </Button>
@@ -126,9 +130,10 @@ function Onboarding() {
           onClick={handleNext}
           disabled={!isStepValid}
           sx={{
-            backgroundColor: "#005244",
+            backgroundColor: "#93E277",
+            color: "black",
             "&:hover": {
-              backgroundColor: "#003f33",
+              backgroundColor: "#A0C5F2",
             },
           }}
         >

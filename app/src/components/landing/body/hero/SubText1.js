@@ -7,24 +7,24 @@ import { useRouter } from "next/navigation";
 export default function SubText1({ isDesktop }) {
   const router = useRouter();
 
-  const style1 = {
-    heading: {
-      fontFamily: "'Manrope', sans-serif",
-      fontStyle: "normal",
-      fontWeight: 500,
-      fontSize: "28px",
-      lineHeight: "37px",
-      color: "rgb(0, 0, 0)",
-    },
-    body: {
-      fontFamily: "'Manrope', sans-serif",
-      fontStyle: "normal",
-      fontWeight: 400,
-      fontSize: "16px",
-      lineHeight: "22px",
-      color: "#525252",
-    },
-  };
+  // const style1 = {
+  //   heading: {
+  //     fontFamily: "'Manrope', sans-serif",
+  //     fontStyle: "normal",
+  //     fontWeight: 500,
+  //     fontSize: "28px",
+  //     lineHeight: "37px",
+  //     color: "rgb(0, 0, 0)",
+  //   },
+  //   body: {
+  //     fontFamily: "'Manrope', sans-serif",
+  //     fontStyle: "normal",
+  //     fontWeight: 400,
+  //     fontSize: "16px",
+  //     lineHeight: "22px",
+  //     color: "#525252",
+  //   },
+  // };
 
   return (
     <Stack spacing={isDesktop ? 10 : 3} justifyContent={"center"}>

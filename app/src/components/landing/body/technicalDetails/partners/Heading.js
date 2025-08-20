@@ -1,5 +1,4 @@
-import typography from "../../../../../app/utils/styles";
-import { Stack, Box, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import siteConfig from "../../../../../app/utils/siteConfig";
 import typographyStyles from "@/app/styles";
 

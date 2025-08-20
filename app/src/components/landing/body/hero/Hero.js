@@ -1,9 +1,8 @@
 import HeroText from "./HeroText";
-import { Box, Container, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import SubText1 from "./SubText1";
-import HeroImage from "./HeroImage";
 
-export default function Hero({ isDesktop, heroImage }) {
+export default function Hero({ isDesktop }) {
   return (
     <Grid container spacing={isDesktop ? 10 : 3}>
       <Grid item size={{ sm: 12, md: 12, lg: 8 }}>

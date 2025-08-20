@@ -31,11 +31,11 @@ export default function MortgageDetails({
 }) {
   return (
     <Grid container spacing={4} sx={{ mt: 4, width: "100%" }}>
-      <Grid size={{ md: 4, xs: 12 }}>
-        <MortgagePlan />
+      <Grid size={{ md: 6, xs: 12 }}>
+        <MortgagePlan data={data} />
       </Grid>
-      <Grid size={{ md: 8, xs: 12 }}>
-        <PropertyDetailsComponent />
+      <Grid size={{ md: 6, xs: 12 }}>
+        <PropertyDetailsComponent data={data} />
       </Grid>
     </Grid>
   );

@@ -1,3 +1,5 @@
+// src/components/dashboard/onboardingSteps.ts
+
 import { OnboardingProps } from "./types";
 
 export const onboardingSteps: OnboardingProps[] = [
@@ -19,10 +21,12 @@ export const onboardingSteps: OnboardingProps[] = [
         key: "annualIncome",
         type: "money",
       },
+      { title: "Emirates ID number", key: "emiratesId", type: "number" },
       {
-        title: "Emirates ID number",
-        key: "emiratesId",
-        type: "number",
+        title: "Company Name (from external directory)",
+        key: "companyName",
+        type: "dynamicText",
+        endpoint: "/api/companies/search",
       },
     ],
   },
@@ -39,6 +43,12 @@ export const onboardingSteps: OnboardingProps[] = [
         key: "propertyType",
         type: "dropdown",
         options: ["Apartment", "Villa", "Townhouse"],
+      },
+      {
+        title: "Nearby Metro Station",
+        key: "metroStation",
+        type: "dynamicDropdown",
+        endpoint: "/api/metro-stations",
       },
     ],
   },
@@ -65,8 +75,8 @@ export const onboardingSteps: OnboardingProps[] = [
     description: "Please select your primary bank for rent repayments.",
     questions: [
       {
-        type: "gridSelect",
         key: "selectedBank",
+        type: "gridSelect",
         options: [
           {
             label: "Abu Dhabi Commercial Bank",

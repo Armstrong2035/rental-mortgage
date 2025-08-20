@@ -1,18 +1,24 @@
-/*
-My dynamic types (populated by API calls): 
-1. DynamicDropdown 
-2. DynamicText
-*/
+// src/components/dashboard/types.ts
 
-type BaseQuestion = {
+export type BaseQuestion = {
   key: string;
   title?: string;
 };
-type TextQuestion = BaseQuestion & {
-  type: "text" | "dropdown" | "money" | "email" | "phone" | "number";
+
+// Static text/number/email/money questions
+export type TextQuestion = BaseQuestion & {
+  type: "text" | "money" | "email" | "phone" | "number";
 };
 
-type GridSelectOption = {
+// Dropdown with fixed options
+export type DropdownQuestion = BaseQuestion & {
+  type: "dropdown";
+  options: string[] | object[];
+  multiple?: boolean;
+};
+
+// Grid select with images/icons
+export type GridSelectOption = {
   label: string;
   value: string;
   iconUrl?: string;
@@ -20,28 +26,35 @@ type GridSelectOption = {
   description?: string;
 };
 
-type GridSelectQuestion = BaseQuestion & {
+export type GridSelectQuestion = BaseQuestion & {
   type: "gridSelect";
   options: GridSelectOption[];
-  multiple?: boolean; // allow multi-select?
+  multiple?: boolean;
 };
 
-type StringOption = string;
-type ObjectOption = object;
-
-type DropdownQuestion = BaseQuestion & {
-  type: "dropdown";
-  options: StringOption[] | ObjectOption[];
-  multiple?: boolean; // allow multi-select?
+// Dynamic API-backed questions
+export type DynamicTextQuestion = BaseQuestion & {
+  type: "dynamicText";
+  endpoint: string;
 };
 
-export type Question = TextQuestion | DropdownQuestion | GridSelectQuestion;
+export type DynamicDropdownQuestion = BaseQuestion & {
+  type: "dynamicDropdown";
+  endpoint: string;
+  multiple?: boolean;
+};
 
-type BaseOnboardingData = {
+// Union of all question types
+export type Question =
+  | TextQuestion
+  | DropdownQuestion
+  | GridSelectQuestion
+  | DynamicTextQuestion
+  | DynamicDropdownQuestion;
+
+// Onboarding step
+export type OnboardingProps = {
   title: string;
   description: string;
-};
-
-export type OnboardingProps = BaseOnboardingData & {
   questions: Question[];
 };

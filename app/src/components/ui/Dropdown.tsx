@@ -26,6 +26,7 @@ export function Dropdown({
       select
       label={label}
       value={value}
+      fullWidth
       onChange={(e) => {
         console.log("Dropdown value changed:", e.target.value);
         onChange(e.target.value);
@@ -33,10 +34,10 @@ export function Dropdown({
       onBlur={() => setTouched(true)}
       error={isError}
       helperText={isError ? "This field is required" : helperText}
-      fullWidth
       variant="outlined"
       sx={{
         marginBottom: "1rem",
+        width: "100%",
         fontFamily: "Plus Jakarta Sans",
         "& input": {
           fontFamily: "Plus Jakarta Sans",

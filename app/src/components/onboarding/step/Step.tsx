@@ -49,12 +49,12 @@ export default function Step({ step, formData, onChange }: Props) {
         {step.questions.map((question) => {
           // For gridSelect type, use full width, otherwise use responsive sizing
           const gridSize =
-            question.type === "gridSelect" ? { xs: 12 } : { sm: 12, md: 6 };
+            question.type === "gridSelect" ? { xs: 12 } : { sm: 12, md: 12 };
 
           const questionKey = question.key;
 
           return (
-            <Grid size={gridSize} key={questionKey}>
+            <Grid size={gridSize} key={questionKey} sx={{ width: "100%" }}>
               <RenderEngine
                 question={question}
                 value={formData[questionKey]?.value || ""}

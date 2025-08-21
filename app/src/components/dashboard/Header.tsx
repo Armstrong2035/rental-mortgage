@@ -42,6 +42,7 @@ export default function Header({ data }: { data: OnboardingFormData | null }) {
         justifyContent="space-between"
         alignItems="center"
         sx={{
+          width: "100%",
           padding: "1rem 2rem",
           background: "linear-gradient(90deg, #00695C, #004D40)",
           color: "#ffffff",

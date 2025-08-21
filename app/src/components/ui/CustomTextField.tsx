@@ -59,6 +59,7 @@ export function CustomTextField({
       }
       sx={{
         marginBottom: "1rem",
+        width: "100%",
         fontFamily: "Plus Jakarta Sans",
         "& input": {
           fontFamily: "Plus Jakarta Sans",

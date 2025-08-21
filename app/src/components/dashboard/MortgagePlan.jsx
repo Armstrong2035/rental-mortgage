@@ -16,14 +16,19 @@ export default function MortgagePlan({ data }) {
     return (
       <Card
         sx={{
-          borderRadius: 4,
+          borderRadius: { xs: 3, sm: 4 },
           overflow: "hidden",
           boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
           background: "linear-gradient(180deg, #ffffff 0%, #fafafa 100%)",
         }}
       >
-        <CardContent sx={{ p: 4 }}>
-          <Typography variant="h6" textAlign="center" color="text.secondary">
+        <CardContent sx={{ p: { xs: 2, sm: 4 } }}>
+          <Typography
+            variant="h6"
+            textAlign="center"
+            color="text.secondary"
+            sx={{ fontSize: { xs: "1rem", sm: "1.25rem" } }}
+          >
             Complete onboarding to view your mortgage plan
           </Typography>
         </CardContent>
@@ -63,25 +68,26 @@ export default function MortgagePlan({ data }) {
   return (
     <Card
       sx={{
-        borderRadius: 4,
+        borderRadius: { xs: 3, sm: 4 },
         overflow: "hidden",
         boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
         background: "linear-gradient(180deg, #ffffff 0%, #fafafa 100%)",
       }}
     >
-      <CardContent sx={{ p: 4 }}>
+      <CardContent sx={{ p: { xs: 2.5, sm: 4 } }}>
         <Stack
-          justifyItems={"flex-start"}
-          alignContent={"flex-start"}
-          sx={{ width: "50%" }}
+          justifyItems="flex-start"
+          alignContent="flex-start"
+          sx={{ width: "100%" }}
         >
           <Typography
             sx={{
               ...textStyles.light16,
-              fontSize: 15,
+              textAlign: "left",
+              fontSize: { xs: 14, sm: 15 },
               fontWeight: 600,
               color: "#004D40",
-              mb: 1,
+              mb: { xs: 1.5, sm: 1 },
               letterSpacing: "-0.3px",
             }}
           >
@@ -96,34 +102,41 @@ export default function MortgagePlan({ data }) {
               bgcolor: "#004D40",
               color: "#fff",
               fontWeight: 600,
-              fontSize: 16,
+              fontSize: { xs: 14, sm: 16 },
               borderRadius: "12px",
-              px: 2,
-              py: 1,
-              mb: 3,
+              px: { xs: 1.5, sm: 2 },
+              py: { xs: 0.5, sm: 1 },
+              mb: { xs: 2, sm: 3 },
               boxShadow: "0 3px 10px rgba(0,77,64,0.2)",
+              alignSelf: { xs: "flex-start", sm: "flex-start" },
             }}
           />
         </Stack>
 
-        <Divider sx={{ width: "100%", my: 1 }} />
+        <Divider sx={{ width: "100%", my: { xs: 1.5, sm: 1 } }} />
 
-        <Stack spacing={2} sx={{ width: "100%" }}>
+        <Stack spacing={{ xs: 1.5, sm: 2 }} sx={{ width: "100%" }}>
           {planDetailsArray.map((details, index) => (
             <Box
               key={index}
               sx={{
                 display: "flex",
+                flexDirection: "row",
                 justifyContent: "space-between",
+                alignItems: "flex-start",
                 width: "100%",
+                gap: { xs: 1, sm: 2 },
               }}
             >
               <Typography
                 sx={{
                   ...textStyles.light16,
-                  fontSize: 15,
+                  fontSize: { xs: 13, sm: 15 },
                   color: "#616161",
                   fontWeight: 500,
+                  flex: 1,
+                  maxWidth: { xs: "60%", sm: "50%" },
+                  textAlign: "left",
                 }}
               >
                 {details.key}
@@ -131,9 +144,13 @@ export default function MortgagePlan({ data }) {
               <Typography
                 sx={{
                   ...textStyles.light16,
-                  fontSize: 15,
+                  fontSize: { xs: 13, sm: 15 },
                   fontWeight: 700,
                   color: "#004D40",
+                  textAlign: "right",
+                  flex: 1,
+                  maxWidth: { xs: "40%", sm: "50%" },
+                  wordBreak: "break-word",
                 }}
               >
                 {details.value}

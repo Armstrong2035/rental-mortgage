@@ -13,12 +13,33 @@ import propertyIllustration from "../../../public/property-illustration.png";
 import textStyles from "@/app/styles";
 
 const PropertyDetailsComponent = ({ data }) => {
+  // Return early if data is not available
+  if (!data) {
+    return (
+      <Card
+        sx={{
+          p: 4,
+          borderRadius: 4,
+          boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+        }}
+      >
+        <CardContent sx={{ p: 0 }}>
+          <Typography variant="h6" textAlign="center" color="text.secondary">
+            Complete onboarding to view property details
+          </Typography>
+        </CardContent>
+      </Card>
+    );
+  }
+
   const propertyData = {
-    title: data.buildingName.value,
-    location: data.location.value,
-    propertyType: data.propertyType.value,
-    bedrooms: data.bedrooms.value,
-    amount: `${parseFloat(data.totalAnnualRent.value).toLocaleString()} AED`,
+    title: data.buildingName?.value || "Property Name",
+    location: data.location?.value || "Location",
+    propertyType: data.propertyType?.value || "Property Type",
+    bedrooms: data.bedrooms?.value || "0",
+    amount: `${parseFloat(
+      data.totalAnnualRent?.value || "0"
+    ).toLocaleString()} AED`,
   };
 
   return (

@@ -11,12 +11,32 @@ import {
 import { textStyles } from "@/app/style";
 
 export default function MortgagePlan({ data }) {
+  // Return early if data is not available
+  if (!data) {
+    return (
+      <Card
+        sx={{
+          borderRadius: 4,
+          overflow: "hidden",
+          boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+          background: "linear-gradient(180deg, #ffffff 0%, #fafafa 100%)",
+        }}
+      >
+        <CardContent sx={{ p: 4 }}>
+          <Typography variant="h6" textAlign="center" color="text.secondary">
+            Complete onboarding to view your mortgage plan
+          </Typography>
+        </CardContent>
+      </Card>
+    );
+  }
+
   const interestRate = 0.035; // 3.5% default
 
-  // Parse numbers safely
-  const annualIncome = parseFloat(data.annualIncome.value);
-  const downpayment = parseFloat(data.downpayment.value);
-  const totalAnnualRent = parseFloat(data.totalAnnualRent.value);
+  // Parse numbers safely with fallbacks
+  const annualIncome = parseFloat(data.annualIncome?.value || "0");
+  const downpayment = parseFloat(data.downpayment?.value || "0");
+  const totalAnnualRent = parseFloat(data.totalAnnualRent?.value || "0");
 
   // Calculate loan amount
   const loanAmount = totalAnnualRent - downpayment;
@@ -27,12 +47,15 @@ export default function MortgagePlan({ data }) {
   const planDetailsArray = [
     { key: "Annual Income", value: `${annualIncome.toLocaleString()} AED` },
     { key: "Downpayment", value: `${downpayment.toLocaleString()} AED` },
-    { key: "Bank", value: data.selectedBank.value },
+    { key: "Bank", value: data.selectedBank?.value || "Not selected" },
     {
       key: "Total Annual Rent",
       value: `${totalAnnualRent.toLocaleString()} AED`,
     },
-    { key: "Employment Status", value: data.employmentStatus.value },
+    {
+      key: "Employment Status",
+      value: data.employmentStatus?.value || "Not specified",
+    },
     { key: "Total Payment", value: `${totalPayment.toLocaleString()} AED` },
     { key: "Interest Rate", value: `${(interestRate * 100).toFixed(1)}%` },
   ];

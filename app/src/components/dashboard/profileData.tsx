@@ -1,4 +1,6 @@
-export const profileQuestions = [
+import { Question } from "../onboarding/types";
+
+export const profileQuestions: Question[] = [
   { title: "Full Name", key: "fullName", type: "text" },
   { title: "Email Address", key: "emailAddress", type: "email" },
   { title: "Phone Number", key: "phoneNumber", type: "phone" },

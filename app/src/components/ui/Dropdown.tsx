@@ -26,7 +26,10 @@ export function Dropdown({
       select
       label={label}
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => {
+        console.log("Dropdown value changed:", e.target.value);
+        onChange(e.target.value);
+      }}
       onBlur={() => setTouched(true)}
       error={isError}
       helperText={isError ? "This field is required" : helperText}

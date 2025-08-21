@@ -3,6 +3,7 @@
 export type BaseQuestion = {
   key: string;
   title?: string;
+  required?: boolean;
 };
 
 // Static text/number/email/money questions
@@ -35,7 +36,8 @@ export type GridSelectQuestion = BaseQuestion & {
 // Dynamic API-backed questions
 export type DynamicTextQuestion = BaseQuestion & {
   type: "dynamicText";
-  endpoint: string;
+  endpoint?: string;
+  required?: boolean;
 };
 
 export type DynamicDropdownQuestion = BaseQuestion & {

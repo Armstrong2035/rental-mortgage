@@ -85,8 +85,10 @@ function Onboarding() {
   // ✅ Step validation logic
   // ✅ Step validation logic without required flag
   const isStepValid = currentStep.questions.every((question) => {
-    const key = question.key; // ✅ use the right key
-    const value = formData[key]?.value;
+    if (question.required === false) {
+      return true; // Not required, so it's valid
+    }
+    const value = formData[question.key]?.value;
     return typeof value === "string" && value.trim() !== "";
   });
 

@@ -15,6 +15,7 @@ const renderMap: Record<string, any> = {
   number: CustomTextField,
   dropdown: Dropdown,
   gridSelect: GridSelect,
+  dynamicText: CustomTextField,
 };
 
 type RenderEngineProps = {
@@ -26,7 +27,6 @@ type RenderEngineProps = {
 export function RenderEngine({ question, value, onChange }: RenderEngineProps) {
   const Component = renderMap[question.type];
   if (!Component) return null;
-
   return (
     <Component
       label={question.title}

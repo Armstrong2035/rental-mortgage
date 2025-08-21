@@ -22,12 +22,6 @@ export const onboardingSteps: OnboardingProps[] = [
         type: "money",
       },
       { title: "Emirates ID number", key: "emiratesId", type: "number" },
-      {
-        title: "Company Name (from external directory)",
-        key: "companyName",
-        type: "dynamicText",
-        endpoint: "/api/companies/search",
-      },
     ],
   },
   {
@@ -43,12 +37,6 @@ export const onboardingSteps: OnboardingProps[] = [
         key: "propertyType",
         type: "dropdown",
         options: ["Apartment", "Villa", "Townhouse"],
-      },
-      {
-        title: "Nearby Metro Station",
-        key: "metroStation",
-        type: "dynamicDropdown",
-        endpoint: "/api/metro-stations",
       },
     ],
   },
@@ -67,6 +55,7 @@ export const onboardingSteps: OnboardingProps[] = [
         title: "How much downpayment can you afford?",
         key: "downpayment",
         type: "money",
+        required: false,
       },
     ],
   },

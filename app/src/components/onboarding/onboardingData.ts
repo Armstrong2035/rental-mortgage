@@ -31,7 +31,6 @@ export const onboardingSteps: OnboardingProps[] = [
       { title: "Building name", key: "buildingName", type: "text" },
       { title: "Bedrooms", key: "bedrooms", type: "number" },
       { title: "Location", key: "location", type: "text" },
-      { title: "Landlord Name", key: "landlordName", type: "text" },
       {
         title: "Property Type",
         key: "propertyType",
@@ -57,6 +56,8 @@ export const onboardingSteps: OnboardingProps[] = [
         type: "money",
         required: false,
       },
+      { title: "Landlord Name", key: "landlordName", type: "text" },
+      { title: "Landlord Contact", key: "landlordContact", type: "phone" },
     ],
   },
   {
@@ -231,6 +232,28 @@ export const onboardingSteps: OnboardingProps[] = [
           },
         ],
         multiple: false,
+      },
+    ],
+  },
+  {
+    title: "Terms & Conditions",
+    description: "Please confirm the following:",
+    questions: [
+      {
+        key: "termsAccepted",
+        type: "checkbox",
+        title: "I agree to the FATCA / CKS Reclearation",
+      },
+      {
+        key: "notPoliticallyExposed",
+        type: "checkbox",
+        title: "I am not a politically exposed person",
+      },
+      {
+        key: "consentToContact",
+        type: "checkbox",
+        title:
+          "I consent to be contacted by the bank, and its representatives for further information",
       },
     ],
   },

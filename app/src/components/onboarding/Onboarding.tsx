@@ -74,16 +74,6 @@ function Onboarding() {
     setStepIndex((prev) => Math.max(prev - 1, 0));
   };
 
-  // const clearLocalStorage = () => {
-  //   localStorage.removeItem("onboarding_form_data");
-  //   localStorage.removeItem("onboarding_final_submission");
-  //   setFormData({});
-  //   setStepIndex(0);
-  //   console.log("Cleared localStorage and reset form");
-  // };
-
-  // ✅ Step validation logic
-  // ✅ Step validation logic without required flag
   const isStepValid = currentStep.questions.every((question) => {
     if (question.required === false) {
       return true; // Not required, so it's valid

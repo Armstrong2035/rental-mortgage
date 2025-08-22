@@ -11,6 +11,11 @@ export type TextQuestion = BaseQuestion & {
   type: "text" | "money" | "email" | "phone" | "number";
 };
 
+export type CheckboxQuestion = BaseQuestion & {
+  type: "checkbox";
+  title: string; // wording for the checkbox
+};
+
 // Dropdown with fixed options
 export type DropdownQuestion = BaseQuestion & {
   type: "dropdown";
@@ -52,7 +57,8 @@ export type Question =
   | DropdownQuestion
   | GridSelectQuestion
   | DynamicTextQuestion
-  | DynamicDropdownQuestion;
+  | DynamicDropdownQuestion
+  | CheckboxQuestion;
 
 // Onboarding step
 export type OnboardingProps = {
